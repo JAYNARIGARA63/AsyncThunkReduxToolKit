@@ -10,16 +10,19 @@ import {useDispatch, useSelector} from 'react-redux';
 import {AppDispatch, RootState} from '../redux/Store';
 import axios from 'axios';
 import {loginUser} from '../redux/LoginSlice';
+import {useNavigation} from '@react-navigation/native';
 // import {auth} from '../redux/LoginSlice';
 
 const LoginScreen = () => {
+  const navigation = useNavigation<any>();
   const [username, setUsername] = useState('emilys');
   const [password, setPassword] = useState('emilyspass');
   const dispatch = useDispatch();
   const {user, loading, error} = useSelector((state: any) => state.auth);
 
   const handleLogin = async () => {
-    dispatch(loginUser({username, password}) as any);
+    // dispatch(loginUser({username, password}) as any);
+    navigation.navigate('DashBoard');
   };
 
   console.log(user, loading, error, 'state----');
